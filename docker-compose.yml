@@ -16,7 +16,6 @@ topogram:
    - ROOT_URL=http://localhost
    - MAIL_URL=smtp://some.mailserver.com:25 # add mailgun here
    - VIRTUAL_HOST=test.topogram.io
-  extra_hosts: 178.62.103.191
 
 mongo:
   image: mongo:latest
