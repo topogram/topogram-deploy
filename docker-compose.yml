@@ -12,19 +12,6 @@ topogram:
    - MAIL_URL=smtp://some.mailserver.com:25 # add mailgun here
    - VIRTUAL_HOST=test.topogram.io
 
-nginx:
-  restart: always
-  build: ./nginx
-  volumes:
-    - /www/public
-  volumes_from:
-    - topogram
-  ports:
-      - "80:80"
-  links:
-      - topogram:topogram
-
-
 mongo:
   image: mongo:latest
   ports:
