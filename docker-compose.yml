@@ -1,19 +1,19 @@
-nginx:
-  restart: always
-  build: ./nginx
-  ports:
-      - "80:80"
-      - "443:443"
-  environment:
-     - NGINX_HOST=foobar.com
-     - NGINX_PORT=80
-  links:
-      - topogram:topogram
+# nginx:
+#   restart: always
+#   build: ./nginx
+#   ports:
+#       - "80:80"
+#       - "443:443"
+#   environment:
+#      - NGINX_HOST=foobar.com
+#      - NGINX_PORT=80
+#   links:
+#       - web:web
 
-topogram:
+web:
   image: topogram/topogram
   ports:
-   - "8080"
+   - "8080:8080"
   volumes:
     - "/opt/app"
   links:
@@ -22,7 +22,7 @@ topogram:
    - MONGO_URL=mongodb://mongo:27017/yourapp # resolves to the internal IP of the container below
    - ROOT_URL=http://localhost
    - MAIL_URL=smtp://some.mailserver.com:25 # add mailgun here
-   - VIRTUAL_HOST=test.topogram.io
+   - VIRTUAL_HOST=dev.topogram.io
 
 mongo:
   image: mongo:latest
