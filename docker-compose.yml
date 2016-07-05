@@ -1,19 +1,19 @@
 nginx:
   restart: always
   build: ./nginx
-  volumes:
-    - /www/public
-  volumes_from:
-    - topogram
   ports:
       - "80:80"
+      - "443:443"
+  environment:
+     - NGINX_HOST=foobar.com
+     - NGINX_PORT=80
   links:
       - topogram:topogram
 
 topogram:
   image: topogram/topogram
   ports:
-   - "8080:8080"
+   - "8080"
   volumes:
     - "/opt/app"
   links:
