@@ -1,3 +1,15 @@
+nginx:
+  restart: always
+  build: ./nginx
+  volumes:
+    - /www/public
+  volumes_from:
+    - topogram
+  ports:
+      - "80:80"
+  links:
+      - topogram:topogram
+
 topogram:
   image: topogram/topogram
   ports:
